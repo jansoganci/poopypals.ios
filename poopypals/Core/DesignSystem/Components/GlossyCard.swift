@@ -13,7 +13,7 @@ struct GlossyCard<Content: View>: View {
     let shadowIntensity: Double
 
     init(
-        gradient: [Color] = [.ppPrimary, .ppSecondary],
+        gradient: [Color] = PPGradients.peachPink,
         shadowIntensity: Double = 0.3,
         @ViewBuilder content: () -> Content
     ) {
@@ -24,7 +24,7 @@ struct GlossyCard<Content: View>: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
+            // Background gradient (using Memeverse pastels)
             LinearGradient(
                 colors: gradient,
                 startPoint: .topLeading,
@@ -46,12 +46,7 @@ struct GlossyCard<Content: View>: View {
             content
         }
         .cornerRadius(PPCornerRadius.lg)
-        .shadow(
-            color: Color.black.opacity(shadowIntensity),
-            radius: 20,
-            x: 0,
-            y: 10
-        )
+        .ppShadow(.lift)
     }
 }
 
@@ -90,84 +85,51 @@ struct HeroPoopIcon: View {
             // Main poop emoji
             Text("💩")
                 .font(.system(size: size))
-                .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+                .ppShadow(.sm)
         }
     }
 }
 
-// MARK: - Vibrant Gradient Backgrounds
-
-enum PPGradients {
-    static let sunset = [
-        Color(hex: "#FF6B6B"),
-        Color(hex: "#FFD93D"),
-        Color(hex: "#6BCB77")
-    ]
-
-    static let ocean = [
-        Color(hex: "#4E54C8"),
-        Color(hex: "#8F94FB")
-    ]
-
-    static let fire = [
-        Color(hex: "#FF416C"),
-        Color(hex: "#FF4B2B")
-    ]
-
-    static let purple = [
-        Color(hex: "#667EEA"),
-        Color(hex: "#764BA2")
-    ]
-
-    static let mint = [
-        Color(hex: "#00F260"),
-        Color(hex: "#0575E6")
-    ]
-
-    static let poopy = [
-        Color(hex: "#8B4513"),  // Brown
-        Color(hex: "#D2691E"),
-        Color(hex: "#CD853F")
-    ]
-}
+// NOTE: PPGradients moved to Core/DesignSystem/Colors/PPGradients.swift
+// Import automatically available - use PPGradients.peachPink, .mintLavender, etc.
 
 // MARK: - Preview
 
 #Preview {
     VStack(spacing: PPSpacing.xl) {
-        GlossyCard(gradient: PPGradients.ocean) {
+        GlossyCard(gradient: PPGradients.mintLavender) {
             VStack(spacing: PPSpacing.lg) {
                 HeroPoopIcon(size: 100)
 
                 Text("Your Streak")
                     .font(.ppTitle2)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
 
                 Text("47")
                     .font(.ppNumberLarge)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
 
                 Text("Days Strong! 🔥")
                     .font(.ppBody)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
             }
             .padding(PPSpacing.xxl)
         }
         .padding(PPSpacing.lg)
 
-        GlossyCard(gradient: PPGradients.fire) {
+        GlossyCard(gradient: PPGradients.coralOrange) {
             HStack(spacing: PPSpacing.md) {
                 Text("🏆")
-                    .font(.system(size: 60))
+                    .font(.ppEmojiMedium)
 
                 VStack(alignment: .leading) {
                     Text("Achievement")
                         .font(.ppCaption)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.ppTextSecondary)
 
                     Text("Century Club!")
                         .font(.ppTitle2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.ppTextPrimary)
                 }
             }
             .padding(PPSpacing.lg)
