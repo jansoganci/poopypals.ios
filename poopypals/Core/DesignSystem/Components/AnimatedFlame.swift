@@ -40,13 +40,13 @@ struct AnimatedFlame: View {
     }
 
     private var flameColor: Color {
-        // Flame color changes based on streak length
+        // Flame color changes based on streak length (Memeverse colors)
         switch streakCount {
-        case 0...3: return Color.orange.opacity(0.3)
-        case 4...7: return Color.orange
-        case 8...30: return Color(hex: "#FF6B35")  // Deep orange
-        case 31...99: return Color.red
-        default: return Color(hex: "#8B0000")  // Dark red for 100+
+        case 0...3: return .ppPlayfulOrange.opacity(0.3)
+        case 4...7: return .ppPlayfulOrange
+        case 8...30: return .ppFlameOrange  // Deep orange
+        case 31...99: return .ppFunAlert
+        default: return .ppFlameRed  // Dark red for 100+
         }
     }
 
@@ -92,7 +92,7 @@ struct FlameParticleView: View {
                 Circle()
                     .fill(
                         LinearGradient(
-                            colors: [.orange, .red, .clear],
+                            colors: [.ppPlayfulOrange, .ppFunAlert, .clear],
                             startPoint: .bottom,
                             endPoint: .top
                         )
@@ -158,12 +158,12 @@ struct StreakBadge: View {
                 AnimatedNumber(
                     value: streakCount,
                     font: .ppNumberLarge,
-                    color: .white
+                    color: .ppTextPrimary
                 )
 
                 Text(streakCount == 1 ? "Day" : "Days")
                     .font(.ppLabel)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
             }
         }
         .frame(width: 120, height: 120)
@@ -199,11 +199,7 @@ struct StreakBadge: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                LinearGradient(
-                    colors: [.ppPrimary, .ppSecondary],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+                LinearGradient.ppGradient(PPGradients.peachYellow)
             )
         }
     }

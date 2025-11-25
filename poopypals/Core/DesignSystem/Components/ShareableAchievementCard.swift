@@ -13,23 +13,19 @@ struct ShareableAchievementCard: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.ppPrimary, .ppSecondary],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            // Background gradient (Memeverse pastel)
+            LinearGradient.ppGradient(PPGradients.peachPink)
 
             VStack(spacing: PPSpacing.lg) {
                 // Achievement Icon
                 Image(systemName: achievement.iconName)
-                    .font(.system(size: 80))
-                    .foregroundColor(.white)
+                    .font(.ppEmojiLarge)
+                    .foregroundColor(.ppTextPrimary)
 
                 // Achievement Title
                 Text(achievement.title)
                     .font(.ppTitle1)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
                     .multilineTextAlignment(.center)
 
                 // Streak Count (if applicable)
@@ -40,13 +36,13 @@ struct ShareableAchievementCard: View {
                         Text("\(streak)")
                             .font(.ppNumberLarge)
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
                 }
 
                 // Achievement Description
                 Text(achievement.description)
                     .font(.ppBody)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, PPSpacing.xl)
 
@@ -56,16 +52,16 @@ struct ShareableAchievementCard: View {
                 VStack(spacing: PPSpacing.xxs) {
                     Text("Track with")
                         .font(.ppCaption)
-                        .foregroundColor(.white.opacity(0.7))
+                        .foregroundColor(.ppTextTertiary)
 
                     Text("PoopyPals")
                         .font(.ppTitle2)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.ppTextPrimary)
 
                     Text("💩 Available on App Store")
                         .font(.ppCaptionSmall)
-                        .foregroundColor(.white.opacity(0.7))
+                        .foregroundColor(.ppTextTertiary)
                 }
             }
             .padding(PPSpacing.xl)

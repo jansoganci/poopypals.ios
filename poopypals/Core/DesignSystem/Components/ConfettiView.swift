@@ -80,17 +80,17 @@ struct ConfettiParticle: Identifiable {
         // Random rotation
         self.rotation = Double.random(in: 0...360)
 
-        // Random color from confetti palette
+        // Random color from Memeverse confetti palette
         let colors: [Color] = [
-            .ppPrimary,
-            .ppSecondary,
-            .ppAccent,
-            Color(hex: "#F59E0B"),  // Amber
-            Color(hex: "#EC4899"),  // Pink
-            Color(hex: "#8B5CF6"),  // Purple
-            Color(hex: "#3B82F6"),  // Blue
+            .ppMain,               // Soft Peach
+            .ppSecondary,          // Mint
+            .ppAccent,             // Sunshine Yellow
+            .ppConfettiYellow,     // Yellow
+            .ppConfettiPink,       // Bubblegum Pink
+            .ppConfettiPurple,     // Support Lavender
+            .ppPlayfulOrange,      // Playful Orange
         ]
-        self.color = colors.randomElement() ?? .ppPrimary
+        self.color = colors.randomElement() ?? .ppMain
     }
 }
 
@@ -162,8 +162,8 @@ extension View {
                 }
                 .bounceEffect()
                 .padding()
-                .background(Color.ppPrimary)
-                .foregroundColor(.white)
+                .background(Color.ppMain)
+                .foregroundColor(.ppTextPrimary)
                 .cornerRadius(PPCornerRadius.sm)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

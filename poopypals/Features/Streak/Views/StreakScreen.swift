@@ -13,7 +13,7 @@ struct StreakScreen: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color(red: 0.545, green: 0.624, blue: 1.0)
+                Color.ppBackground
                     .ignoresSafeArea()
 
                 VStack {
