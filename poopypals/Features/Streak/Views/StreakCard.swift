@@ -18,15 +18,15 @@ struct StreakCard: View {
     var body: some View {
         VStack(spacing: PPSpacing.xl) {
             Text("🔥")
-                .font(.system(size: 80))
+                .font(.ppEmojiLarge)
 
             Text("\(streakCount)")
-                .font(.system(size: 72, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
+                .font(.ppNumberHero)
+                .foregroundColor(.ppTextPrimary)
 
             Text(streakLabel)
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.white.opacity(0.95))
+                .font(.ppLabelLarge)
+                .foregroundColor(.ppTextSecondary)
                 .textCase(.uppercase)
 
             Button(action: onBreakStreak) {
@@ -34,36 +34,29 @@ struct StreakCard: View {
                     Image(systemName: "flame.fill")
                     Text("Don't break the chain!")
                 }
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.white.opacity(0.95))
-                .padding(.horizontal, 20)
-                .padding(.vertical, 12)
-                .background(Color.white.opacity(0.2))
-                .cornerRadius(20)
+                .font(.ppButton)
+                .foregroundColor(.ppTextPrimary)
+                .padding(.horizontal, PPSpacing.md)
+                .padding(.vertical, PPSpacing.sm)
+                .background(Color.ppSurface.opacity(0.3))
+                .cornerRadius(PPCornerRadius.pill)
             }
             .buttonStyle(.plain)
         }
-        .frame(maxWidth: 350)
+        .frame(maxWidth: PPMaxWidth.card)
         .aspectRatio(0.83, contentMode: .fit)
-        .padding(40)
+        .padding(PPSpacing.xxl)
         .background(
-            LinearGradient(
-                colors: [
-                    Color(red: 1.0, green: 0.45, blue: 0.45),
-                    Color(red: 1.0, green: 0.30, blue: 0.30)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            LinearGradient.ppGradient(PPGradients.coralOrange)
         )
-        .cornerRadius(24)
-        .shadow(color: Color.black.opacity(0.18), radius: 20, x: 0, y: 12)
+        .cornerRadius(PPCornerRadius.xl)
+        .ppShadow(.hover)
     }
 }
 
 #Preview {
     StreakCard(streakCount: 7, onBreakStreak: {})
         .padding()
-        .background(Color(red: 0.545, green: 0.624, blue: 1.0))
+        .background(Color.ppBackground)
 }
 

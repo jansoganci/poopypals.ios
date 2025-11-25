@@ -82,17 +82,17 @@ struct PPBounceButton: View {
 
     private var backgroundColor: Color {
         switch style {
-        case .primary: return .ppPrimary
+        case .primary: return .ppMain
         case .secondary: return .ppSecondary
-        case .danger: return .ppDanger
+        case .danger: return .ppFunAlert
         case .ghost: return .clear
         }
     }
 
     private var foregroundColor: Color {
         switch style {
-        case .primary, .secondary, .danger: return .white
-        case .ghost: return .ppPrimary
+        case .primary, .secondary, .danger: return .ppTextPrimary  // Accessibility fix: white on pastel = 2.3:1 FAILS WCAG
+        case .ghost: return .ppMain
         }
     }
 }
