@@ -115,7 +115,7 @@ struct ChatView: View {
                 }
             }) {
                 Image(systemName: "arrow.up.circle.fill")
-                    .font(.system(size: 32))
+                    .font(.ppIconLarge)
                     .foregroundColor(viewModel.inputText.isEmpty ? .ppTextTertiary : .ppMain)
             }
             .disabled(viewModel.inputText.isEmpty || viewModel.isLoading)
