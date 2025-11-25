@@ -263,8 +263,8 @@ struct FadeInModifier: ViewModifier {
                     // Slide In
                     Text("Slide In from Bottom")
                         .padding()
-                        .background(Color.ppPrimary)
-                        .foregroundColor(.white)
+                        .background(Color.ppMain)
+                        .foregroundColor(.ppTextPrimary)
                         .cornerRadius(PPCornerRadius.sm)
                         .slideIn(from: .bottom, delay: 0.1)
 
@@ -272,7 +272,7 @@ struct FadeInModifier: ViewModifier {
                     Text("Scale In with Bounce")
                         .padding()
                         .background(Color.ppSecondary)
-                        .foregroundColor(.white)
+                        .foregroundColor(.ppTextPrimary)
                         .cornerRadius(PPCornerRadius.sm)
                         .scaleIn(delay: 0.3)
 
@@ -280,7 +280,7 @@ struct FadeInModifier: ViewModifier {
                     Text("Pulsing")
                         .padding()
                         .background(Color.ppAccent)
-                        .foregroundColor(.white)
+                        .foregroundColor(.ppTextPrimary)
                         .cornerRadius(PPCornerRadius.sm)
                         .pulse()
 
@@ -297,8 +297,8 @@ struct FadeInModifier: ViewModifier {
                     // Shake
                     Text("Tap to Shake")
                         .padding()
-                        .background(Color.ppDanger)
-                        .foregroundColor(.white)
+                        .background(Color.ppFunAlert)
+                        .foregroundColor(.ppTextPrimary)
                         .cornerRadius(PPCornerRadius.sm)
                         .shake(trigger: showShake)
                         .onTapGesture {
@@ -307,8 +307,8 @@ struct FadeInModifier: ViewModifier {
 
                     // Rotate
                     Image(systemName: "arrow.triangle.2.circlepath")
-                        .font(.system(size: 40))
-                        .foregroundColor(.ppPrimary)
+                        .font(.ppIconLarge)
+                        .foregroundColor(.ppMain)
                         .rotate(duration: 2.0)
                 }
                 .padding()
