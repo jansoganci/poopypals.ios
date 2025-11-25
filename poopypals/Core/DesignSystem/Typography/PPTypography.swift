@@ -100,6 +100,17 @@ extension Font {
     /// Extra large emoji - 100pt (e.g., hero sections, celebrations)
     static let ppEmojiXL = Font.system(size: 100, weight: .regular, design: .default)
 
+    // MARK: - Icons (NEW - for SF Symbols icons)
+
+    /// Small icon - 16pt (compact UI icons)
+    static let ppIconSmall = Font.system(size: 16, weight: .regular, design: .default)
+
+    /// Medium icon - 24pt (standard icons)
+    static let ppIconMedium = Font.system(size: 24, weight: .regular, design: .default)
+
+    /// Large icon - 36pt (prominent icons, hero sections)
+    static let ppIconLarge = Font.system(size: 36, weight: .regular, design: .default)
+
     // MARK: - Input Fields (NEW)
 
     /// Input field text - 16pt regular rounded (optimal for text input)

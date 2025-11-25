@@ -94,7 +94,7 @@ struct StatCard: View {
     var body: some View {
         VStack(spacing: PPSpacing.xs) {
             Image(systemName: icon)
-                .font(.system(size: 30))
+                .font(.ppIconLarge)
                 .foregroundColor(color)
 
             // Animated number instead of static text
