@@ -116,7 +116,7 @@ struct ChatView: View {
             }) {
                 Image(systemName: "arrow.up.circle.fill")
                     .font(.system(size: 32))
-                    .foregroundColor(viewModel.inputText.isEmpty ? .ppTextTertiary : .ppPrimary)
+                    .foregroundColor(viewModel.inputText.isEmpty ? .ppTextTertiary : .ppMain)
             }
             .disabled(viewModel.inputText.isEmpty || viewModel.isLoading)
             .accessibilityLabel("Send message")
@@ -138,11 +138,11 @@ struct MessageBubble: View {
             VStack(alignment: message.isUser ? .trailing : .leading, spacing: PPSpacing.xs) {
                 Text(message.text)
                     .font(.ppBody)
-                    .foregroundColor(message.isUser ? .white : .ppTextPrimary)
+                    .foregroundColor(message.isUser ? .ppTextPrimary : .ppTextPrimary)
                     .padding(PPSpacing.md)
                     .background(
                         message.isUser
-                            ? Color.ppPrimary
+                            ? Color.ppMain
                             : Color.ppBackgroundSecondary
                     )
                     .cornerRadius(PPCornerRadius.md)
@@ -205,10 +205,10 @@ struct QuickQuestionButton: View {
                 Text(text)
                     .font(.ppCaption)
             }
-            .foregroundColor(.ppPrimary)
+            .foregroundColor(.ppMain)
             .padding(.horizontal, PPSpacing.md)
             .padding(.vertical, PPSpacing.sm)
-            .background(Color.ppPrimary.opacity(0.1))
+            .background(Color.ppMain.opacity(0.1))
             .cornerRadius(PPCornerRadius.full)
         }
     }
