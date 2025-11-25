@@ -15,16 +15,8 @@ struct NewHomeView: View {
             let topPadding = geometry.safeAreaInsets.top + 40
 
             ZStack {
-                // Vibrant gradient background
-                LinearGradient(
-                    colors: [
-                        Color(hex: "#667EEA"),
-                        Color(hex: "#764BA2"),
-                        Color(hex: "#F093FB")
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+                // Memeverse gradient background
+                LinearGradient.ppGradient(PPGradients.lavenderPeach)
                 .ignoresSafeArea()
 
                 ScrollView {
@@ -96,14 +88,14 @@ struct NewHomeView: View {
                     icon: "list.bullet.circle.fill",
                     value: viewModel.logs.count,
                     label: "Total Logs",
-                    gradient: PPGradients.ocean
+                    gradient: PPGradients.mintLavender
                 )
 
                 VibrantStatCard(
                     icon: "dollarsign.circle.fill",
                     value: viewModel.totalFlushFunds,
                     label: "Flush Funds",
-                    gradient: PPGradients.mint
+                    gradient: PPGradients.sunnyMint
                 )
             }
 
@@ -112,14 +104,14 @@ struct NewHomeView: View {
                     icon: "trophy.fill",
                     value: 3,  // TODO: Real achievement count
                     label: "Achievements",
-                    gradient: PPGradients.sunset
+                    gradient: PPGradients.coralOrange
                 )
 
                 VibrantStatCard(
                     icon: "person.2.fill",
                     value: 0,  // TODO: Active challenges
                     label: "Challenges",
-                    gradient: PPGradients.purple
+                    gradient: PPGradients.peachPink
                 )
             }
         }
@@ -132,7 +124,7 @@ struct NewHomeView: View {
             Text("Today's Logs")
                 .font(.ppTitle2)
                 .fontWeight(.bold)
-                .foregroundColor(.white)
+                .foregroundColor(.ppTextPrimary)
                 .padding(.horizontal, PPSpacing.xs)
 
             ForEach(viewModel.todayLogs) { log in
@@ -157,13 +149,13 @@ struct VibrantQuickLogButton: View {
         }) {
             VStack(spacing: PPSpacing.xxs) {
                 Text(rating.emoji)
-                    .font(.system(size: 44))
-                    .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 3)
+                    .font(.ppEmojiSmall)
+                    .ppShadow(.sm)
 
                 Text(rating.displayName)
                     .font(.ppCaptionSmall)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
             }
             .frame(maxWidth: .infinity)
             .frame(height: 90)
@@ -187,7 +179,7 @@ struct VibrantQuickLogButton: View {
                         .stroke(Color.white.opacity(0.5), lineWidth: 1)
                 }
             )
-            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+            .ppShadow(.md)
         }
         .buttonStyle(BounceButtonStyle())
     }
@@ -205,20 +197,20 @@ struct VibrantStatCard: View {
         GlossyCard(gradient: gradient, shadowIntensity: 0.3) {
             VStack(spacing: PPSpacing.sm) {
                 Image(systemName: icon)
-                    .font(.system(size: 36))
-                    .foregroundColor(.white)
-                    .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 3)
+                    .font(.ppIconLarge)
+                    .foregroundColor(.ppTextPrimary)
+                    .ppShadow(.sm)
 
                 AnimatedNumber(
                     value: value,
-                    font: .system(size: 32, weight: .bold, design: .rounded),
-                    color: .white
+                    font: .ppNumberMedium,
+                    color: .ppTextPrimary
                 )
 
                 Text(label)
                     .font(.ppCaption)
                     .fontWeight(.medium)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
                     .multilineTextAlignment(.center)
             }
             .padding(PPSpacing.md)
@@ -247,23 +239,23 @@ struct VibrantLogCard: View {
                     .frame(width: 60, height: 60)
 
                 Text(log.rating.emoji)
-                    .font(.system(size: 35))
+                    .font(.ppEmojiSmall)
             }
 
             VStack(alignment: .leading, spacing: PPSpacing.xxs) {
                 Text(log.formattedTime)
                     .font(.ppLabelLarge)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
 
                 Text("\(log.durationMinutes) min • Type \(log.consistency)")
                     .font(.ppCaption)
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(.ppTextTertiary)
 
                 if let notes = log.notes, !notes.isEmpty {
                     Text(notes)
                         .font(.ppBodySmall)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(.ppTextSecondary)
                         .lineLimit(1)
                 }
             }
@@ -273,13 +265,13 @@ struct VibrantLogCard: View {
             // Flush funds earned
             VStack(spacing: PPSpacing.xxs) {
                 Image(systemName: "dollarsign.circle.fill")
-                    .font(.system(size: 24))
-                    .foregroundColor(Color(hex: "#FFD93D"))
+                    .font(.ppIconMedium)
+                    .foregroundColor(.ppAccent)
 
                 Text("+\(log.flushFundsEarned)")
                     .font(.ppLabel)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
             }
         }
         .padding(PPSpacing.md)
@@ -297,7 +289,7 @@ struct VibrantLogCard: View {
             RoundedRectangle(cornerRadius: PPCornerRadius.md)
                 .stroke(Color.white.opacity(0.3), lineWidth: 1)
         )
-        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
+        .ppShadow(.sm)
     }
 }
 
@@ -313,12 +305,8 @@ struct VibrantAchievementView: View {
 
     var body: some View {
         ZStack {
-            // Gradient background
-            LinearGradient(
-                colors: PPGradients.purple,
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            // Memeverse gradient background
+            LinearGradient.ppGradient(PPGradients.peachPink)
             .ignoresSafeArea()
 
             VStack(spacing: PPSpacing.xl) {
@@ -326,7 +314,7 @@ struct VibrantAchievementView: View {
 
                 // Celebration emoji
                 Text("🎉")
-                    .font(.system(size: 100))
+                    .font(.ppEmojiXL)
                     .scaleEffect(scaleIcon ? 1.2 : 0.8)
                     .onAppear {
                         HapticManager.shared.achievementUnlocked()
@@ -344,34 +332,34 @@ struct VibrantAchievementView: View {
                         .frame(width: 120, height: 120)
 
                     Image(systemName: achievement.iconName)
-                        .font(.system(size: 60))
-                        .foregroundColor(.white)
+                        .font(.ppEmojiMedium)
+                        .foregroundColor(.ppTextPrimary)
                 }
                 .pulse()
 
                 Text("Achievement Unlocked!")
                     .font(.ppTitle1)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.ppTextPrimary)
 
                 Text(achievement.title)
                     .font(.ppTitle2)
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(.ppTextSecondary)
 
                 Text(achievement.description)
                     .font(.ppBody)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(.ppTextSecondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, PPSpacing.xl)
 
                 // Reward
                 HStack(spacing: PPSpacing.xs) {
                     Image(systemName: "dollarsign.circle.fill")
-                        .foregroundColor(Color(hex: "#FFD93D"))
+                        .foregroundColor(.ppAccent)
                     Text("+\(achievement.flushFundsReward) Flush Funds")
                         .font(.ppLabelLarge)
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundColor(.ppTextPrimary)
                 }
                 .padding(PPSpacing.md)
                 .background(Color.white.opacity(0.2))
@@ -396,7 +384,7 @@ struct VibrantAchievementView: View {
                         dismiss()
                     }
                     .font(.ppBody)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(.ppTextSecondary)
                 }
                 .padding(.horizontal, PPSpacing.xl)
                 .padding(.bottom, PPSpacing.xl)

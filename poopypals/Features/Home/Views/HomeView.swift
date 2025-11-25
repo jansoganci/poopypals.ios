@@ -72,7 +72,7 @@ struct StatsRow: View {
                 icon: "list.bullet.circle.fill",
                 value: "\(totalLogs)",
                 label: "Total Logs",
-                color: .ppPrimary
+                color: .ppMain
             )
 
             StatCard(
@@ -112,7 +112,7 @@ struct StatCard: View {
         .padding(PPSpacing.md)
         .background(Color.ppBackgroundSecondary)
         .cornerRadius(PPCornerRadius.md)
-        .ppShadow(PPShadow.sm)
+        .ppShadow(.sm)
         .slideIn(from: .bottom, delay: 0.2)  // Staggered animation
     }
 }
@@ -150,7 +150,7 @@ struct QuickLogButton: View {
         }) {
             VStack(spacing: PPSpacing.xxs) {
                 Text(rating.emoji)
-                    .font(.system(size: 32))
+                    .font(.ppEmojiSmall)
 
                 Text(rating.displayName)
                     .font(.ppCaptionSmall)
@@ -190,7 +190,7 @@ struct LogRow: View {
     var body: some View {
         HStack(spacing: PPSpacing.md) {
             Text(log.rating.emoji)
-                .font(.system(size: 40))
+                .font(.ppEmojiSmall)
 
             VStack(alignment: .leading, spacing: PPSpacing.xxs) {
                 Text(log.formattedTime)
@@ -215,7 +215,7 @@ struct LogRow: View {
         .padding(PPSpacing.md)
         .background(Color.ppBackgroundSecondary)
         .cornerRadius(PPCornerRadius.md)
-        .ppShadow(PPShadow.sm)
+        .ppShadow(.sm)
     }
 }
 
@@ -231,13 +231,13 @@ struct AchievementUnlockView: View {
 
     var body: some View {
         ZStack {
-            Color.black.opacity(0.3)
+            Color.ppSurface.opacity(0.3)
                 .ignoresSafeArea()
 
             VStack(spacing: PPSpacing.xl) {
                 // Confetti animation!
                 Text("🎉")
-                    .font(.system(size: 80))
+                    .font(.ppEmojiLarge)
                     .scaleEffect(scaleIcon ? 1.2 : 0.8)
                     .onAppear {
                         HapticManager.shared.achievementUnlocked()
@@ -249,8 +249,8 @@ struct AchievementUnlockView: View {
                     }
 
                 Image(systemName: achievement.iconName)
-                    .font(.system(size: 60))
-                    .foregroundColor(.ppPrimary)
+                    .font(.ppEmojiMedium)
+                    .foregroundColor(.ppMain)
 
                 Text("Achievement Unlocked!")
                     .font(.ppTitle1)
@@ -287,8 +287,8 @@ struct AchievementUnlockView: View {
                         .font(.ppLabelLarge)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, PPSpacing.sm)
-                        .background(Color.ppPrimary)
-                        .foregroundColor(.white)
+                        .background(Color.ppMain)
+                        .foregroundColor(.ppTextPrimary)
                         .cornerRadius(PPCornerRadius.sm)
                     }
                     .padding(.horizontal, PPSpacing.xl)
@@ -303,7 +303,7 @@ struct AchievementUnlockView: View {
             .padding(PPSpacing.xxl)
             .background(Color.ppBackgroundSecondary)
             .cornerRadius(PPCornerRadius.lg)
-            .ppShadow(PPShadow.xl)
+            .ppShadow(.xl)
             .padding(PPSpacing.xl)
             .scaleIn()  // Scale in animation
         }
