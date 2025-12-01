@@ -23,6 +23,8 @@ Package.resolved
 
 # Config files (contains secrets)
 Config.plist
+**/Config.plist
+poopypals/Config.plist
 
 # macOS
 .DS_Store
