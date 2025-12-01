@@ -377,15 +377,6 @@ Before submitting PR, verify:
 - [ ] All components follow composition patterns from `COMPONENT_LIBRARY.md`
 - [ ] Contrast ratios tested with WCAG checker
 
-### 4. Pull Request Process
-1. Create feature branch from `main`
-2. Implement changes following code standards
-3. Add/update tests (aim for 70%+ coverage)
-4. Update documentation if needed
-5. Open PR with:
-   - Clear description of changes
-   - Screenshots/videos for UI changes
-   - Link to related issue (if applicable)
 
 ### 5. Code Review Checklist
 - [ ] Code follows MVVM architecture

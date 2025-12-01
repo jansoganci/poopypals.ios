@@ -87,17 +87,8 @@ class ChatViewModel: ObservableObject {
     private func handleError(_ error: Error) {
         errorAlert = ErrorAlert(
             title: "Oops!",
-            message: "I couldn't process that request. Try again?",
-            primaryAction: .init(
-                title: "Retry",
-                action: { [weak self] in
-                    Task {
-                        await self?.sendMessage()
-                    }
-                }
-            )
+            message: "I couldn't process that request. Try again?"
         )
-
         HapticManager.shared.error()
     }
 }
@@ -126,14 +117,3 @@ struct ChatMessage: Identifiable {
     }
 }
 
-struct ErrorAlert: Identifiable {
-    let id = UUID()
-    let title: String
-    let message: String
-    let primaryAction: AlertAction?
-
-    struct AlertAction {
-        let title: String
-        let action: () -> Void
-    }
-}

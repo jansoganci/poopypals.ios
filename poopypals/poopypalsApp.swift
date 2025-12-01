@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import StableID
 
 @main
 struct PoopyPalsApp: App {
+    @StateObject private var appContainer = AppContainer.shared
+    
+    init() {
+        // Configure StableID for persistent device identification
+        StableID.configure()
+        
+        // Initialize app container
+        Task { @MainActor in
+            await AppContainer.shared.initialize()
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
-            NewHomeView()  // MEHMET ALİ ERBİL EDITION! 🎉
+            MainTabView()
         }
     }
 }
