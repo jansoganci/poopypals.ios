@@ -27,6 +27,24 @@ Device-based auth without user accounts:
 Robust error handling patterns:
 - **[07 - Error Handling](./07-error-handling.md)** - Error types, presentation, validation, logging
 
+### Setup & Configuration
+Quick setup guides and configuration:
+- **[Backend Quick Start](./setup/BACKEND_QUICKSTART.md)** - 5-minute backend setup
+- **[Backend Test Guide](./setup/BACKEND_TEST_REHBERI.md)** - Testing backend connection
+- **[Config.plist Setup](./setup/CONFIG_PLIST_EKLEME.md)** - Adding Config.plist to Xcode
+
+### Development
+Development guides and workflows:
+- **[Xcode Log Guide](./development/XCODE_LOG_REHBERI.md)** - Understanding backend logs in Xcode
+
+### Troubleshooting
+Common issues and quick fixes:
+- **[Quick Fixes](./troubleshooting/HIZLI_FIX.md)** - Common build and runtime issues
+
+### Architecture Reports
+Detailed architecture analysis:
+- **[Architecture Report](./MIMARI_RAPOR.md)** - Supabase isolation and layer structure
+
 ## 🎯 Quick Reference
 
 ### Key Technologies

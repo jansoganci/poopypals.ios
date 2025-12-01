@@ -19,7 +19,9 @@ struct ChatView: View {
                             LoadingBubble()
                         }
                     }
-                    .padding(PPSpacing.md)
+                    .padding(.top, PPSpacing.md)
+                    .padding(.horizontal, PPSpacing.md)
+                    .padding(.bottom, PPSpacing.md)
                 }
                 .onChange(of: viewModel.messages.count) { _ in
                     if let lastMessage = viewModel.messages.last {
@@ -41,15 +43,14 @@ struct ChatView: View {
             inputBar
         }
         .background(Color.ppBackground)
-        .navigationTitle("Ask PoopyPals")
+        .toolbar(.hidden, for: .navigationBar)
         .alert(item: $viewModel.errorAlert) { alert in
             Alert(
                 title: Text(alert.title),
                 message: Text(alert.message),
-                primaryButton: .default(Text(alert.primaryAction?.title ?? "OK")) {
-                    alert.primaryAction?.action()
-                },
-                secondaryButton: .cancel()
+                dismissButton: .default(Text("OK")) {
+                    // Retry can be handled in view if needed
+                }
             )
         }
     }
@@ -96,7 +97,7 @@ struct ChatView: View {
             }
         }
         .padding(.vertical, PPSpacing.sm)
-        .background(Color.ppBackgroundSecondary)
+        .background(Color.ppSurfaceAlt)
     }
 
     private var inputBar: some View {
@@ -104,7 +105,7 @@ struct ChatView: View {
             TextField("Ask about your bathroom habits...", text: $viewModel.inputText)
                 .textFieldStyle(.plain)
                 .padding(PPSpacing.sm)
-                .background(Color.ppBackgroundSecondary)
+                .background(Color.ppSurfaceAlt)
                 .cornerRadius(PPCornerRadius.md)
                 .focused($isInputFocused)
                 .disabled(viewModel.isLoading)
@@ -143,7 +144,7 @@ struct MessageBubble: View {
                     .background(
                         message.isUser
                             ? Color.ppMain
-                            : Color.ppBackgroundSecondary
+                            : Color.ppSurfaceAlt
                     )
                     .cornerRadius(PPCornerRadius.md)
 
@@ -174,7 +175,7 @@ struct LoadingBubble: View {
                 }
             }
             .padding(PPSpacing.md)
-            .background(Color.ppBackgroundSecondary)
+            .background(Color.ppSurfaceAlt)
             .cornerRadius(PPCornerRadius.md)
 
             Spacer(minLength: 60)

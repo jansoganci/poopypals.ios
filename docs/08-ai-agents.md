@@ -210,7 +210,7 @@ supabase functions logs analytics-agent --follow
 
 ### "Failed to calculate streak" Error
 **Cause**: Database function doesn't exist
-**Fix**: Run migration: `docs/supabase-migrations/05_helper_functions.sql`
+**Fix**: Run migration: `supabase/migrations/05_helper_functions.sql`
 
 ### "Invalid response" Error
 **Cause**: Response format mismatch

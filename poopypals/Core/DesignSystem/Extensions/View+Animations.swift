@@ -286,7 +286,7 @@ struct FadeInModifier: ViewModifier {
 
                     // Shimmer
                     RoundedRectangle(cornerRadius: PPCornerRadius.md)
-                        .fill(Color.ppBackgroundSecondary)
+                        .fill(Color.ppSurfaceAlt)
                         .frame(height: 100)
                         .shimmer()
                         .overlay(

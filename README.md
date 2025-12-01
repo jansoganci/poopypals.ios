@@ -68,11 +68,15 @@ PoopyPals/
   ```
 
 ### 📚 Documentation
-- `docs/00-getting-started.md` – onboarding & environment setup
-- `docs/01-project-overview.md` – product vision and roadmap
-- `docs/04-design-system.md` – typography, colors, reusable components
-- `docs/05-supabase-integration.md` – sync flows and schema notes
-- `docs/06-device-identification.md` – anonymous device strategy
+Comprehensive documentation is available in the [`docs/`](./docs/) folder:
+
+**Quick Links:**
+- **[📖 Full Documentation Index](./docs/README.md)** – Complete documentation guide
+- **[🚀 Getting Started](./docs/00-getting-started.md)** – Onboarding & environment setup
+- **[🏗️ Architecture](./docs/02-architecture.md)** – MVVM + Clean Architecture patterns
+- **[🎨 Design System](./docs/04-design-system.md)** – Typography, colors, reusable components
+- **[⚙️ Setup Guides](./docs/setup/)** – Backend setup, config, testing
+- **[🐛 Troubleshooting](./docs/troubleshooting/)** – Common issues and fixes
 
 ### 🤝 Contributing
 1. Create a feature branch: `git checkout -b feature/short-description`

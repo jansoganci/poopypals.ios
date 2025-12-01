@@ -223,7 +223,7 @@ struct AnimatedCurrency: View {
                         Text("Tap Me")
                             .font(.ppTitle2)
                             .padding(PPSpacing.xl)
-                            .background(Color.ppBackgroundSecondary)
+                            .background(Color.ppSurfaceAlt)
                             .cornerRadius(PPCornerRadius.md)
                     }
                     .floatingNumber(trigger: $floatingTrigger)

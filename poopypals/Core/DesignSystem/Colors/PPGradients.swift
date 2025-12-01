@@ -96,6 +96,22 @@ enum PPGradients {
         .ppSurfaceAlt    // #FEEAF5 Blush Pink
     ]
 
+    // MARK: - Additional Gradients
+
+    /// Lavender → Peach (Home screen background)
+    /// Use for: Main backgrounds, hero sections
+    static let lavenderPeach: [Color] = [
+        .ppSupportLavender,  // #C7AFFF Support Lavender
+        .ppMain               // #FFB8A0 Soft Peach
+    ]
+
+    /// Sunny Yellow → Mint (Stats cards)
+    /// Use for: Stat cards, positive metrics
+    static let sunnyMint: [Color] = [
+        .ppAccent,      // #FFEC5C Sunshine Yellow
+        .ppSecondary    // #B4E7CE Mint
+    ]
+
     // MARK: - Legacy Mappings (backward compatibility during migration)
 
     /// OLD: PPGradients.purple → NEW: peachPink
